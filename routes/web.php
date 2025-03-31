@@ -13,6 +13,7 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('produtos', ProdutoController::class)->except(['show']);
 Route::resource('vendas', VendaController::class);
-Route::resource('lixeira', LixeiraController::class)->only([
-	'index'
-]);
+Route::prefix('lixeira')->name('lixeira.')->controller(LixeiraController::class)->group(function () {
+	Route::get('/', 'index')->name('index');
+	Route::get('/restore/{id}', 'restore')->name('restore');
+});
