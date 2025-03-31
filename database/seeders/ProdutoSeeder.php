@@ -16,12 +16,12 @@ class ProdutoSeeder extends Seeder
 		// Produtos reais de supermercado
 		$produtosFixos = [
 			['descricao' => 'Arroz Branco 5kg', 'valor' => 25.90, 'quantidade_estoque' => 50],
-			['descricao' => 'Feijão Preto 1kg', 'valor' => 7.50, 'quantidade_estoque' => 100],
+			['descricao' => 'Feijão Preto 1kg', 'valor' => 7.50, 'quantidade_estoque' => 10],
 			['descricao' => 'Óleo de Soja 900ml', 'valor' => 8.90, 'quantidade_estoque' => 80],
-			['descricao' => 'Açúcar Refinado 1kg', 'valor' => 4.20, 'quantidade_estoque' => 120],
-			['descricao' => 'Macarrão Espaguete 500g', 'valor' => 5.80, 'quantidade_estoque' => 90],
-			['descricao' => 'Café em Pó 250g', 'valor' => 12.00, 'quantidade_estoque' => 60],
-			['descricao' => 'Leite Integral 1L', 'valor' => 6.50, 'quantidade_estoque' => 110],
+			['descricao' => 'Açúcar Refinado 1kg', 'valor' => 4.20, 'quantidade_estoque' => 20],
+			['descricao' => 'Macarrão Espaguete 500g', 'valor' => 5.80, 'quantidade_estoque' => 80],
+			['descricao' => 'Café em Pó 250g', 'valor' => 12.00, 'quantidade_estoque' => 6],
+			['descricao' => 'Leite Integral 1L', 'valor' => 6.50, 'quantidade_estoque' => 30],
 			['descricao' => 'Margarina 500g', 'valor' => 9.30, 'quantidade_estoque' => 75],
 			['descricao' => 'Farinha de Trigo 1kg', 'valor' => 5.40, 'quantidade_estoque' => 85],
 			['descricao' => 'Sal Refinado 1kg', 'valor' => 3.90, 'quantidade_estoque' => 95],
@@ -38,8 +38,5 @@ class ProdutoSeeder extends Seeder
 		foreach ($produtosFixos as $produto) {
 			Produto::factory()->create($produto);
 		}
-
-		// Gerar mais 35 produtos aleatórios usando a factory
-		Produto::factory()->count(35)->create();
 	}
 }

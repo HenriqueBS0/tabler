@@ -40,10 +40,10 @@
                                         {{ $produto->quantidade_estoque }}
                                     </td>
                                     <td>
-                                        08/09/2019
+                                        {{ $produto->ultima_venda }}
                                     </td>
                                     <td>
-                                        R$ 30,00
+                                        R$ {{ $produto->total_vendido_formatado }}
                                     </td>
                                     <td>
                                         <a class="icon"
