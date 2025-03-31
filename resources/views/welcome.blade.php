@@ -44,7 +44,7 @@
 									<a href="./index.html" class="nav-link active"><i class="fe fe-home"></i> Home</a>
 								</li>
 								<li class="nav-item">
-									<a href="./produtos.html" class="nav-link"><i class="fe fe-package"></i>
+									<a href="{{ route('produtos.index') }}" class="nav-link"><i class="fe fe-package"></i>
 										Produtos</a>
 								</li>
 								<li class="nav-item">
