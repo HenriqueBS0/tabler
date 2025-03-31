@@ -62,9 +62,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="card-footer">
-                    {{ $produtos->links() }}
-                </div>
+                @if ($produtos->hasPages())
+                    <div class="card-footer">
+                        {{ $produtos->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>
