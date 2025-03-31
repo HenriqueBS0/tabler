@@ -11,7 +11,9 @@
                         <i class="fe fe-search"></i>
                     </div>
                 </div>
-                <button class="btn btn-primary ml-1" type="submit">Buscar</button>
+                <div class="ml-1 my-3 my-lg-0">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
             </form>
         </div>
     @endif
