@@ -64,7 +64,7 @@
                 </div>
                 @if ($produtos->hasPages())
                     <div class="card-footer">
-                        {{ $produtos->links() }}
+                        {{ $produtos->appends(['buscar' => request()->input('buscar')])->links() }}
                     </div>
                 @endif
             </div>
