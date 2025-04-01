@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Venda;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,8 +11,9 @@ class DatabaseSeeder extends Seeder
 	 */
 	public function run(): void
 	{
-		$this->call(ProdutoSeeder::class);
-
-		Venda::factory(10)->create();
+		$this->call([
+			ProdutoSeeder::class,
+			VendaSeeder::class
+		]);
 	}
 }
