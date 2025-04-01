@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Produto;
 use App\Models\Venda;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VendaController extends Controller
 {
@@ -20,16 +21,16 @@ class VendaController extends Controller
 			'quantidade_estoque' => $produto->quantidade_estoque
 		]);
 
-		$vendas = Venda::when($request->has('buscar'), function ($query) use ($request) {
-			return $query->whereHas('produto', function ($query) use ($request) {
-				$query->where('descricao', 'like', '%' . $request->input('buscar') . '%');
-			});
-		})->paginate(5);
+		$vendas = DB::table('vendas')->join('produtos', 'vendas.produto_id', '=', 'produtos.id')
+			->select('vendas.*', 'produtos.descricao as produto_descricao');
 
-		return view(
-			'venda.index',
-			['produtos' => $produtos, 'vendas' => $vendas]
-		);
+		if ($request->has('buscar') && $request->filled('buscar')) {
+			$vendas->where('produtos.descricao', 'like', "%{$request->input('buscar')}%");
+		}
+
+		$vendas = $vendas->paginate(5);
+
+		return view('venda.index', ['produtos' => $produtos, 'vendas' => $vendas]);
 	}
 
 	/**

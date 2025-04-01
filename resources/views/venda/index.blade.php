@@ -25,13 +25,13 @@
                             @foreach ($vendas as $venda)
                                 <tr>
                                     <td><span class="text-muted">{{ $venda->id }}</span></td>
-                                    <td>{{ $venda->produto->descricao }}</td>
+                                    <td>{{ $venda->produto_descricao }}</td>
                                     <td>{{ $venda->quantidade }}</td>
                                     <td>
-                                        R$ {{ $venda->valor_formatado }}
+                                        R$ {{ number_format($venda->valor, 2, ',', '.') }}
                                     </td>
                                     <td>
-                                        R$ {{ $venda->valor_total_formatado }}
+                                        R$ {{ number_format($venda->quantidade * $venda->valor, 2, ',', '.') }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -40,7 +40,7 @@
                 </div>
                 @if ($vendas->hasPages())
                     <div class="card-footer">
-                        {{ $vendas->links() }}
+                        {{ $vendas->appends(['buscar' => request()->input('buscar')])->links() }}
                     </div>
                 @endif
             </div>
