@@ -13,11 +13,14 @@ class ProdutoController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		$data = [
-			'produtos' => Produto::when($request->has('buscar'), function ($query) use ($request) {
+		$produtos = Produto::when(
+			$request->has('buscar') && $request->filled('buscar'),
+			function ($query) use ($request) {
 				return $query->where('descricao', 'like', '%' . $request->input('buscar') . '%');
-			})->paginate(10)
-		];
+			}
+		)->paginate(10);
+
+		$data = ['produtos' => $produtos];
 
 		if ($request->has('idDestroy')) {
 			$data['produtoDestroy'] = Produto::find($request->input('idDestroy'));

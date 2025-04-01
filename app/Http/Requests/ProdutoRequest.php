@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Produto;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProdutoRequest extends FormRequest
